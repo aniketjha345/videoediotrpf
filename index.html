@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Editor Portfolio - K2Infocom</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Profile Card -->
+        <div class="profile-card">
+            <div class="profile-pic">
+                <img src="images/avatar.webp" alt="User Avatar">
+            </div>
+            <div class="profile-details">
+                <h2>Monalisa Asley</h2>
+                <h4>Professional Video Editor</h4>
+                <div class="social">
+                    <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.behance.net/" target="_blank"><i class="fab fa-behance"></i></a>
+                    <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:example@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div class="row">
+                    <span>Phone:</span>
+                    <span>+123 456 789</span>
+                </div>
+                <div class="row">
+                    <span>Email:</span>
+                    <span><a href="mailto:example@gmail.com">example@gmail.com</a></span>
+                </div>
+                <div class="row">
+                    <span>Location:</span>
+                    <span>Los Angeles, USA</span>
+                </div>
+            </div>
+            <button class="download-btn" onclick="downloadCV()">Download CV</button>
+        </div>
+
+        <!-- About Card with Navigation -->
+        <div class="about-card">
+            <!-- Navigation -->
+            <nav class="card-nav">
+                <ul>
+                    <li><a href="javascript:void(0)" onclick="showSection('about')">About</a></li>
+                    <li><a href="javascript:void(0)" onclick="showSection('portfolio')">Portfolio</a></li>
+                    <li><a href="javascript:void(0)" onclick="showSection('contact')">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Sections -->
+            <div id="about" class="section active">
+                <h1>About Me</h1>
+                <p>
+                    I'm a passionate Video Editor with 5+ years of experience in creating compelling visual stories. 
+                    Skilled in Adobe Premiere Pro, Final Cut Pro, and After Effects, I specialize in commercials, short films, and YouTube content.
+                </p>
+            </div>
+            <div id="portfolio" class="section">
+                <h1>Portfolio</h1>
+                <div class="portfolio-gallery">
+                    <!-- Video 1 -->
+                    <div class="portfolio-item">
+                        <video controls class="portfolio-video">
+                            <source src="videos/video1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="portfolio-hover">
+                            <h3>Short Film: The Journey</h3>
+                            <p>A cinematic short film about self-discovery. Tools: Premiere Pro, After Effects</p>
+                        </div>
+                    </div>
+                    <!-- Video 2 -->
+                    <div class="portfolio-item">
+                        <video controls class="portfolio-video">
+                            <source src="videos/video2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="portfolio-hover">
+                            <h3>Commercial: Tech Product Launch</h3>
+                            <p>Dynamic editing for a technology product. Tools: DaVinci Resolve</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="contact" class="section">
+                <h1>Contact</h1>
+                <form class="contact-form" onsubmit="submitForm(event)">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button class="send-btn" type="submit">Let's Collaborate</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.card-nav ul li a');
+
+            // Remove 'active' class from all sections and nav links
+            sections.forEach(section => section.classList.remove('active'));
+            navLinks.forEach(link => link.classList.remove('active-nav'));
+
+            // Add 'active' class to the selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Add active state to the clicked nav link
+            document.querySelector(`a[onclick="showSection('${sectionId}')"]`).classList.add('active-nav');
+        }
+
+        function downloadCV() {
+            // Replace 'cv.pdf' with the actual path to your CV file
+            window.location.href = 'cv.pdf';
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            alert('Your message has been sent successfully!');
+        }
+    </script>
+</body>
+</html>
